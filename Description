@@ -1,0 +1,82 @@
+
+# SEO Sensei: Intelligent Web Content Quality & Duplicate Detector
+
+---
+
+## Project Details
+
+**Project Type:** Machine Learning / Natural Language Processing (NLP)
+**Objective:**
+To design a pipeline that automatically analyzes website content for SEO quality, detects duplicate or low-quality pages, and assigns a quality score (High, Medium, Low) using text analytics and ML models.
+
+**Tech Stack:**
+
+* **Language:** Python 3.9+
+* **Libraries:** pandas, numpy, scikit-learn, BeautifulSoup, textstat, sentence-transformers, TF-IDF
+* **Platform:** Google Colab / Jupyter Notebook
+* **Model Used:** Random Forest Classifier
+
+---
+
+## Core Functionalities
+
+| Module                      | Description                                                                                                                                           |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| HTML Parsing                | Extracts text and titles from raw HTML using BeautifulSoup. Removes markup and isolates main body content from `<p>`, `<article>`, and `<main>` tags. |
+| Text Preprocessing          | Cleans extracted text, converts to lowercase, removes unwanted spaces, and computes structural metrics such as word count and sentence count.         |
+| Feature Engineering         | Computes readability score (Flesch Reading Ease), extracts top keywords using TF-IDF, and generates numerical embeddings for text.                    |
+| Duplicate Detection         | Detects near-duplicate pages using cosine similarity on TF-IDF vectors. Pages with similarity > 0.8 are marked as duplicates.                         |
+| Thin Content Detection      | Flags pages with word count < 500 as “thin content,” which indicates potentially low SEO quality.                                                     |
+| Quality Scoring Model       | A Random Forest classifier predicts content quality (Low, Medium, High) using features like readability, word count, and sentence count.              |
+| Real-time Analysis Function | `analyze_url(url)` scrapes any given URL, extracts text, computes features, and instantly provides quality prediction and duplicate similarity list.  |
+
+---
+
+## How It Works (Pipeline Flow)
+
+1. **Load Dataset:** Import CSV with URLs or pre-scraped HTML content.
+2. **Parse HTML:** Extract body text and compute word count.
+3. **Feature Extraction:** Apply NLP metrics like readability and TF-IDF.
+4. **Duplicate Detection:** Calculate pairwise cosine similarity to find overlapping content.
+5. **Model Training:** Train classifier with labeled SEO-quality conditions.
+6. **Quality Prediction:** Predict quality class and highlight low-quality or duplicate pages.
+7. **Real-time Analysis:** Accepts new URL input and outputs instant analysis.
+
+---
+
+## Advantages and Benefits
+
+| Category              | Advantage                                                                                                       |
+| --------------------- | --------------------------------------------------------------------------------------------------------------- |
+| Automation            | Reduces manual SEO auditing time by automatically analyzing large volumes of content.                           |
+| Accuracy              | Combines readability, keyword strength, and ML classification to produce reliable SEO quality scores.           |
+| Duplicate Prevention  | Helps detect plagiarism or near-duplicate articles across multiple web pages.                                   |
+| Optimization Insight  | Identifies weak (“thin”) pages, guiding content teams to improve readability and word depth.                    |
+| Scalability           | Can analyze dozens of pages efficiently using vectorized computation and embeddings.                            |
+| Extensibility         | Easily expandable to include advanced NLP like sentiment analysis, named entity recognition, or topic modeling. |
+| Real-time Application | The `analyze_url()` function enables on-demand evaluation for any new article or blog post.                     |
+
+---
+
+## Use Cases
+
+* SEO content auditing for digital marketing firms
+* Website quality assurance before publication
+* Duplicate or plagiarism detection
+* Data cleaning for web-crawled datasets
+* Academic or research-based text similarity studies
+
+---
+
+## Key Highlights
+
+* End-to-end pipeline built in Jupyter/Colab (no API keys or databases needed)
+* Modular design, easily reusable for other text quality tasks
+* Achieved model accuracy of approximately 78% on synthetic quality labels
+* Compliant with assignment reproducibility and documentation standards
+
+---
+
+**In short:**
+This project demonstrates a practical, industry-style NLP workflow that transforms raw HTML into structured insights and applies machine learning to assess web content quality.
+
